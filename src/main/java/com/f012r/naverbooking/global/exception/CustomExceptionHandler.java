@@ -13,6 +13,6 @@ public class CustomExceptionHandler {
     public ResponseEntity<ResponseDTO> handleImageNotFoundException(ImageNotFoundException e) {
         return ResponseEntity
                 .status(ResponseCode.ImageNotFoundException.getStatus().value())
-                .body(new ResponseDTO<>(ResponseCode.ImageNotFoundException, e.getMessage()));
+                .body(new ResponseDTO<>(ResponseCode.ImageNotFoundException, null));
     }
 }
