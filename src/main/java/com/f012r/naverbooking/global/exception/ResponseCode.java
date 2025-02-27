@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 public enum ResponseCode {
 
     SUCCESS(HttpStatus.OK, "OK"),
+
+    ImageNotFoundException(HttpStatus.NOT_FOUND, "Image Not Found"),
     ;
 
     private final HttpStatus status;
