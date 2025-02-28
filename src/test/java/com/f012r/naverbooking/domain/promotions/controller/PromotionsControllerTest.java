@@ -1,7 +1,7 @@
 package com.f012r.naverbooking.domain.promotions.controller;
 
 import com.f012r.naverbooking.domain.promotions.service.PromotionsService;
-import com.f012r.naverbooking.global.exception.ResponseCode;
+import com.f012r.naverbooking.global.common.ResponseCode;
 import com.f012r.naverbooking.global.exception.custom.ImageNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

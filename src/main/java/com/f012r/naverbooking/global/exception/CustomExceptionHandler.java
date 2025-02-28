@@ -1,5 +1,6 @@
 package com.f012r.naverbooking.global.exception;
 
+import com.f012r.naverbooking.global.common.ResponseCode;
 import com.f012r.naverbooking.global.common.ResponseDTO;
 import com.f012r.naverbooking.global.exception.custom.ImageNotFoundException;
 import org.springframework.http.ResponseEntity;

@@ -3,7 +3,7 @@ package com.f012r.naverbooking.domain.promotions.controller;
 import com.f012r.naverbooking.domain.promotions.dto.PromotionsResponseDTO;
 import com.f012r.naverbooking.domain.promotions.service.PromotionsService;
 import com.f012r.naverbooking.global.common.ResponseDTO;
-import com.f012r.naverbooking.global.exception.ResponseCode;
+import com.f012r.naverbooking.global.common.ResponseCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

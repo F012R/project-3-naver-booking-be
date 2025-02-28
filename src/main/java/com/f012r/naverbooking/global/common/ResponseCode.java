@@ -1,4 +1,4 @@
-package com.f012r.naverbooking.global.exception;
+package com.f012r.naverbooking.global.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

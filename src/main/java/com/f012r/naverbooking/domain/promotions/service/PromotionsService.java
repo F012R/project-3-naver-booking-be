@@ -7,7 +7,7 @@ import com.f012r.naverbooking.domain.products.repository.ProductImageRepository;
 import com.f012r.naverbooking.domain.promotions.dto.PromotionsResponseDTO;
 import com.f012r.naverbooking.domain.promotions.entity.Promotion;
 import com.f012r.naverbooking.domain.promotions.repository.PromotionsRepository;
-import com.f012r.naverbooking.global.exception.ResponseCode;
+import com.f012r.naverbooking.global.common.ResponseCode;
 import com.f012r.naverbooking.global.exception.custom.ImageNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

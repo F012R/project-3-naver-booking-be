@@ -1,6 +1,6 @@
 package com.f012r.naverbooking.global.exception.custom;
 
-import com.f012r.naverbooking.global.exception.ResponseCode;
+import com.f012r.naverbooking.global.common.ResponseCode;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
