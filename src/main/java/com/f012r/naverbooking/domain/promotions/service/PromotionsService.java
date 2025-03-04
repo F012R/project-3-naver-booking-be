@@ -41,14 +41,10 @@ public class PromotionsService {
             Product promotionedProduct = promotion.getProduct();
             productId = promotionedProduct.getId();
 
-            Optional<ProductImage> productImageOptional = productImageRepository.findFirstByProductAndType(promotionedProduct, "th");
-            if (productImageOptional.isPresent()) {
-                ProductImage productImage = productImageOptional.get();
-                FileInfo file = productImage.getFile();
-                productImageUrl = file.getSaveFileName();
-            } else {
-                throw new ImageNotFoundException(ResponseCode.ImageNotFoundException);
-            }
+            ProductImage productImage = productImageRepository.findFirstByProductAndType(promotionedProduct, "th")
+                    .orElseThrow(() -> new ImageNotFoundException(ResponseCode.ImageNotFoundException));
+            FileInfo file = productImage.getFile();
+            productImageUrl = file.getSaveFileName();
 
             PromotionsResponseDTO.PromotionDTO promotionDTO = PromotionsResponseDTO.PromotionDTO.builder()
                     .id(promotionId)
