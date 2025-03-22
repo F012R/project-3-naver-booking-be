@@ -1,6 +1,5 @@
 package com.f012r.naverbooking.global.common;
 
-import com.f012r.naverbooking.global.exception.ResponseCode;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
 

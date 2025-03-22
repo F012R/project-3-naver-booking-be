@@ -2,7 +2,7 @@ package com.f012r.naverbooking.domain.reservations.controller;
 
 import com.f012r.naverbooking.domain.reservations.service.ReservationService;
 import com.f012r.naverbooking.global.common.ResponseDTO;
-import com.f012r.naverbooking.global.exception.ResponseCode;
+import com.f012r.naverbooking.global.common.ResponseCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
