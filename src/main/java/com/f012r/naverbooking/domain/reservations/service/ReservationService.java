@@ -5,11 +5,11 @@ import com.f012r.naverbooking.domain.reservations.entity.ReservationInfo;
 import com.f012r.naverbooking.domain.reservations.repository.ReservationInfoRepository;
 import com.f012r.naverbooking.global.exception.custom.InvalidEmailException;
 import com.f012r.naverbooking.global.common.ResponseCode;
+import com.f012r.naverbooking.global.util.EmailValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
@@ -18,15 +18,8 @@ public class ReservationService {
 
     private final ReservationInfoRepository reservationInfoRepository;
 
-    private static final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-    private static final Pattern emailPattern = Pattern.compile(EMAIL_REGEX);
-
     public List<ReservationInfoResponse> getReservationsByEmail(String email) {
-        if (email == null || email.isEmpty()) {
-            throw new InvalidEmailException(ResponseCode.InvalidEmailException);
-        }
-
-        if (!emailPattern.matcher(email).matches()) {
+        if (!EmailValidator.isValid(email)) {
             throw new InvalidEmailException(ResponseCode.InvalidEmailException);
         }
 
