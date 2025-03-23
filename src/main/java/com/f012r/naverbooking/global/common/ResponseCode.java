@@ -10,6 +10,10 @@ public enum ResponseCode {
 
     SUCCESS(HttpStatus.OK, "OK"),
 
+    InvalidEmailException(HttpStatus.BAD_REQUEST, "Invalid email format"),
+
+    EmptyEmailException(HttpStatus.BAD_REQUEST, "Email must not be empty"),
+
     ImageNotFoundException(HttpStatus.NOT_FOUND, "Image Not Found"),
     ;
 
