@@ -11,7 +11,7 @@ public enum ResponseCode {
     SUCCESS(HttpStatus.OK, "OK"),
 
     ImageNotFoundException(HttpStatus.NOT_FOUND, "Image Not Found"),
-    ;
+    ProductNotFoundException(HttpStatus.NOT_FOUND, "Product Not Found");
 
     private final HttpStatus status;
     private final String message;
