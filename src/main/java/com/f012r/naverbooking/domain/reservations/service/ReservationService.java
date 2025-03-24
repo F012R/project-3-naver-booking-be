@@ -4,14 +4,12 @@ import com.f012r.naverbooking.domain.reservations.dto.ReservationInfoResponse;
 import com.f012r.naverbooking.domain.reservations.dto.UserInfoResponse;
 import com.f012r.naverbooking.domain.reservations.entity.ReservationInfo;
 import com.f012r.naverbooking.domain.reservations.repository.ReservationInfoRepository;
-import com.f012r.naverbooking.global.exception.custom.EmptyEmailException;
-import com.f012r.naverbooking.global.exception.custom.InvalidEmailException;
-import com.f012r.naverbooking.global.common.ResponseCode;
-import com.f012r.naverbooking.global.util.EmailValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.f012r.naverbooking.global.util.EmailValidator.validateEmail;
 
 @Service
 @RequiredArgsConstructor
@@ -47,13 +45,5 @@ public class ReservationService {
                 .reservationTel(firstReservation.getReservationTel())
                 .reservationEmail(firstReservation.getReservationEmail())
                 .build();
-    }
-
-    private void validateEmail(String email) {
-        if (email == null || email.isEmpty()) {
-            throw new EmptyEmailException(ResponseCode.EmptyEmailException);
-        } else if (!EmailValidator.isValid(email)) {
-            throw new InvalidEmailException(ResponseCode.InvalidEmailException);
-        }
     }
 }
