@@ -25,8 +25,6 @@ public class ReservationCreateService {
     @Transactional
     public ReservationInfoResponse createReservation(ReservationCreateRequest request) {
 
-        validateEmail(request.getReservationEmail());
-
         validateReservationRequest(request);
 
         ReservationInfo reservationInfo = ReservationInfo.builder()
