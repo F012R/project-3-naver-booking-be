@@ -2,11 +2,8 @@ package com.f012r.naverbooking.global.exception;
 
 import com.f012r.naverbooking.global.common.ResponseCode;
 import com.f012r.naverbooking.global.common.ResponseDTO;
-import com.f012r.naverbooking.global.exception.custom.EmptyEmailException;
-import com.f012r.naverbooking.global.exception.custom.InvalidEmailException;
-import com.f012r.naverbooking.global.exception.custom.InvalidReservationException;
+import com.f012r.naverbooking.global.exception.custom.*;
 import org.springframework.http.ResponseEntity;
-import com.f012r.naverbooking.global.exception.custom.ImageNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -39,4 +36,11 @@ public class CustomExceptionHandler {
                 .status(e.getResponseCode().getStatus().value())
                 .body(new ResponseDTO<>(e.getResponseCode(), null));
     }
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<ResponseDTO<Void>> handleProductNotFoundException(ProductNotFoundException e) {
+        return ResponseEntity
+                .status(ResponseCode.ProductNotFoundException.getStatus().value())
+                .body(new ResponseDTO<>(ResponseCode.ProductNotFoundException, null));
+    }
+
 }

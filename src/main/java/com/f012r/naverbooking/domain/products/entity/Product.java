@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.List;
 
 @Getter
 @Setter
@@ -35,5 +36,12 @@ public class Product {
 
     @Column(name = "modify_date")
     private Instant modifyDate;
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    private List<DisplayInfo> displayInfo;
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    private List<ProductImage> productImages;
+
 
 }
