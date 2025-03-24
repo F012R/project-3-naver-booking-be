@@ -34,16 +34,20 @@ public class ReservationInfoService {
 
         List<ReservationInfo> reservations = reservationInfoRepository.findByReservationEmail(email);
 
-        if (reservations.isEmpty()) {
-            return null;
+        String reservationName = "";
+        String reservationTel = "";
+
+        if (!reservations.isEmpty()) {
+            ReservationInfo firstReservation = reservations.get(0);
+            reservationName = firstReservation.getReservationName();
+            reservationTel = firstReservation.getReservationTel();
         }
 
-        ReservationInfo firstReservation = reservations.get(0);
-
         return UserInfoResponse.builder()
-                .reservationName(firstReservation.getReservationName())
-                .reservationTel(firstReservation.getReservationTel())
-                .reservationEmail(firstReservation.getReservationEmail())
+                .reservationName(reservationName)
+                .reservationTel(reservationTel)
+                .reservationEmail(email)
                 .build();
     }
+
 }
