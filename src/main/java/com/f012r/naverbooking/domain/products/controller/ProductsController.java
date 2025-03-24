@@ -27,7 +27,7 @@ public class ProductsController {
     public ResponseEntity<ResponseDTO> getAllProducts() {
 
         List<ProductsResponseDTO.ProductDTO> productDTOs = productsService.getAllProducts();
-        int totalCount = productDTOs.size();  // 전체 상품 수
+        int totalCount = productDTOs.size();
 
         ProductsResponseDTO responseDTO = ProductsResponseDTO.builder()
                 .totalCount(totalCount)

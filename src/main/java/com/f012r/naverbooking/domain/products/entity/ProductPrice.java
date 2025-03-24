@@ -23,7 +23,7 @@ public class ProductPrice {
     private Product product;
 
     @Column(name = "price_type_name", nullable = false, length = 25)
-    private String priceTypeName; // 성인(A), 청소년(Y), 유아(B), 셋트(S), 장애인(D), 지역주민(C), 어얼리버드(E)
+    private String priceTypeName;
 
     @Column(name = "price", nullable = false)
     private Integer price;
