@@ -14,9 +14,6 @@ public class ReservationInfoResponse {
     private Integer reservationId;
     private Integer productId;
     private Integer displayInfoId;
-    private String reservationName;
-    private String reservationTel;
-    private String reservationEmail;
     private LocalDateTime reservationDate;
     private Integer cancelFlag;
     private List<ReservationPriceResponse> prices;
@@ -26,9 +23,6 @@ public class ReservationInfoResponse {
                 .reservationId(entity.getId())
                 .productId(entity.getProductId())
                 .displayInfoId(entity.getDisplayInfoId())
-                .reservationName(entity.getReservationName())
-                .reservationTel(entity.getReservationTel())
-                .reservationEmail(entity.getReservationEmail())
                 .reservationDate(entity.getReservationDate())
                 .cancelFlag(entity.getCancelFlag())
                 .prices(entity.getPrices().stream().map(ReservationPriceResponse::fromEntity).toList())

@@ -8,10 +8,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "reservation_info")
+@Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@Builder
+@Builder(toBuilder = true)
 public class ReservationInfo {
 
     @Id
@@ -39,6 +40,24 @@ public class ReservationInfo {
     @Column(name = "cancel_flag", nullable = false)
     private Integer cancelFlag;
 
+    @Column(name = "create_date")
+    private LocalDateTime createDate;
+
+    @Column(name = "modify_date")
+    private LocalDateTime modifyDate;
+
     @OneToMany(mappedBy = "reservationInfo", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<ReservationInfoPrice> prices;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createDate = LocalDateTime.now();
+        this.modifyDate = this.createDate;
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.modifyDate = LocalDateTime.now();
+    }
+
 }

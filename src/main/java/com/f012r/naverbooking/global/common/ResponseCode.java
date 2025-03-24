@@ -15,6 +15,9 @@ public enum ResponseCode {
     EmptyEmailException(HttpStatus.BAD_REQUEST, "Email must not be empty"),
 
     ImageNotFoundException(HttpStatus.NOT_FOUND, "Image Not Found"),
+
+    InvalidReservationRequest(HttpStatus.BAD_REQUEST, "Invalid reservation request"),
+
     ProductNotFoundException(HttpStatus.NOT_FOUND, "Product Not Found");
 
     private final HttpStatus status;
