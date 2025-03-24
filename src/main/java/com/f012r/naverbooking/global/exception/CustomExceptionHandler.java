@@ -4,6 +4,7 @@ import com.f012r.naverbooking.global.common.ResponseCode;
 import com.f012r.naverbooking.global.common.ResponseDTO;
 import com.f012r.naverbooking.global.exception.custom.EmptyEmailException;
 import com.f012r.naverbooking.global.exception.custom.InvalidEmailException;
+import com.f012r.naverbooking.global.exception.custom.InvalidReservationException;
 import org.springframework.http.ResponseEntity;
 import com.f012r.naverbooking.global.exception.custom.ImageNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -30,5 +31,12 @@ public class CustomExceptionHandler {
         return ResponseEntity
                 .status(ResponseCode.ImageNotFoundException.getStatus().value())
                 .body(new ResponseDTO<>(ResponseCode.ImageNotFoundException, null));
+    }
+
+    @ExceptionHandler(InvalidReservationException.class)
+    public ResponseEntity<ResponseDTO<Void>> handleInvalidReservationException(InvalidReservationException e) {
+        return ResponseEntity
+                .status(e.getResponseCode().getStatus().value())
+                .body(new ResponseDTO<>(e.getResponseCode(), null));
     }
 }
