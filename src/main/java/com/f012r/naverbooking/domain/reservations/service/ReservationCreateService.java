@@ -37,23 +37,22 @@ public class ReservationCreateService {
                 .cancelFlag(0)
                 .build();
 
-        ReservationInfo savedReservation = reservationInfoRepository.save(reservationInfo);
-
         List<ReservationInfoPrice> prices = new ArrayList<>();
         for (ReservationCreateRequest.PriceRequest priceRequest : request.getPrices()) {
             ReservationInfoPrice price = ReservationInfoPrice.builder()
                     .productPriceId(priceRequest.getProductPriceId())
                     .count(priceRequest.getCount())
-                    .reservationInfo(savedReservation)
+                    .reservationInfo(reservationInfo)
                     .build();
             prices.add(price);
         }
 
-        savedReservation.setPrices(prices);
-        reservationInfoRepository.save(savedReservation);
+        reservationInfo.setPrices(prices);
+        ReservationInfo savedReservation = reservationInfoRepository.save(reservationInfo);
 
         return ReservationInfoResponse.fromEntity(savedReservation);
     }
+
 
     private void validateReservationRequest(ReservationCreateRequest request) {
         validateEmail(request.getReservationEmail());
