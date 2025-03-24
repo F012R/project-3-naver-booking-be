@@ -13,7 +13,7 @@ import static com.f012r.naverbooking.global.util.EmailValidator.validateEmail;
 
 @Service
 @RequiredArgsConstructor
-public class ReservationService {
+public class ReservationInfoService {
 
     private final ReservationInfoRepository reservationInfoRepository;
 

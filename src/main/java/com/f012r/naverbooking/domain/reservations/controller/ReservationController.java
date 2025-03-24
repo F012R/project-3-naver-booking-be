@@ -5,7 +5,7 @@ import com.f012r.naverbooking.domain.reservations.dto.ReservationInfoResponse;
 import com.f012r.naverbooking.domain.reservations.dto.ReservationListResponse;
 import com.f012r.naverbooking.domain.reservations.dto.UserInfoResponse;
 import com.f012r.naverbooking.domain.reservations.service.ReservationCreateService;
-import com.f012r.naverbooking.domain.reservations.service.ReservationService;
+import com.f012r.naverbooking.domain.reservations.service.ReservationInfoService;
 import com.f012r.naverbooking.global.common.ResponseDTO;
 import com.f012r.naverbooking.global.common.ResponseCode;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ReservationController {
 
-    private final ReservationService reservationService;
+    private final ReservationInfoService reservationService;
     private final ReservationCreateService reservationCreateService;
 
     @GetMapping
