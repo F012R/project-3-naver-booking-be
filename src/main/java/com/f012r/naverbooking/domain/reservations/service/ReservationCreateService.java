@@ -60,7 +60,7 @@ public class ReservationCreateService {
         if (request.getReservationName() == null || request.getReservationName().isEmpty() ||
                 request.getReservationTel() == null || request.getReservationTel().isEmpty() ||
                 request.getReservationEmail() == null || request.getReservationEmail().isEmpty()) {
-            throw new InvalidReservationException(ResponseCode.InvalidReservationRequest);
+            throw new InvalidReservationException(ResponseCode.InvalidReservationException);
         }
     }
 }

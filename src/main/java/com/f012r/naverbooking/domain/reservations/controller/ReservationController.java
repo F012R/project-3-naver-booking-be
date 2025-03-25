@@ -6,6 +6,7 @@ import com.f012r.naverbooking.domain.reservations.dto.ReservationListResponse;
 import com.f012r.naverbooking.domain.reservations.dto.UserInfoResponse;
 import com.f012r.naverbooking.domain.reservations.service.ReservationCreateService;
 import com.f012r.naverbooking.domain.reservations.service.ReservationInfoService;
+import com.f012r.naverbooking.domain.reservations.service.ReservationCancelService;
 import com.f012r.naverbooking.global.common.ResponseDTO;
 import com.f012r.naverbooking.global.common.ResponseCode;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ public class ReservationController {
 
     private final ReservationInfoService reservationService;
     private final ReservationCreateService reservationCreateService;
+    private final ReservationCancelService reservationCancelService;
 
     @GetMapping
     public ResponseEntity<ResponseDTO<?>> getReservations(@RequestParam String email) {
@@ -51,5 +53,11 @@ public class ReservationController {
                         response
                 )
         );
+    }
+
+    @DeleteMapping("/{reservationInfoId}")
+    public ResponseEntity<ResponseDTO<Void>> cancelReservation(@PathVariable int reservationInfoId) {
+        reservationCancelService.cancelReservation(reservationInfoId);
+        return ResponseEntity.ok(new ResponseDTO<>(ResponseCode.SUCCESS, null));
     }
 }
