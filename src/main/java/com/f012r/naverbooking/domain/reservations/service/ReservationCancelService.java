@@ -11,11 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class ReservationCancelService {
 
     private final ReservationInfoRepository reservationInfoRepository;
 
+    @Transactional
     public void cancelReservation(int reservationInfoId) {
 
         ReservationInfo reservation = reservationInfoRepository.findById(reservationInfoId)
