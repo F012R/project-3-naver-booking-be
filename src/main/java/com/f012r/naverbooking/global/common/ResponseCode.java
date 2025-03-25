@@ -18,7 +18,11 @@ public enum ResponseCode {
 
     InvalidReservationRequest(HttpStatus.BAD_REQUEST, "Invalid reservation request"),
 
-    ProductNotFoundException(HttpStatus.NOT_FOUND, "Product Not Found");
+    ProductNotFoundException(HttpStatus.NOT_FOUND, "Product Not Found"),
+
+    ReservationNotFoundException(HttpStatus.NOT_FOUND, "Reservation Not Found"),
+
+    ReservationAlreadyCancelledException(HttpStatus.BAD_REQUEST, "Reservation Already Cancelled");
 
     private final HttpStatus status;
     private final String message;

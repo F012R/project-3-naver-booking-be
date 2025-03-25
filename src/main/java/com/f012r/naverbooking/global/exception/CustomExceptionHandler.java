@@ -43,4 +43,18 @@ public class CustomExceptionHandler {
                 .body(new ResponseDTO<>(ResponseCode.ProductNotFoundException, null));
     }
 
+    @ExceptionHandler(ReservationAlreadyCancelledException.class)
+    public ResponseEntity<ResponseDTO<Void>> ReservationAlreadyCancelledException(ReservationAlreadyCancelledException e) {
+        return ResponseEntity
+                .status(ResponseCode.ReservationAlreadyCancelledException.getStatus().value())
+                .body(new ResponseDTO<>(ResponseCode.ReservationAlreadyCancelledException, null));
+    }
+
+    @ExceptionHandler(ReservationNotFoundException.class)
+    public ResponseEntity<ResponseDTO<Void>> ReservationNotFoundException(ReservationNotFoundException e) {
+        return ResponseEntity
+                .status(ResponseCode.ReservationNotFoundException.getStatus().value())
+                .body(new ResponseDTO<>(ResponseCode.ReservationNotFoundException, null));
+    }
+
 }
