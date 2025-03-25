@@ -16,7 +16,7 @@ public enum ResponseCode {
 
     ImageNotFoundException(HttpStatus.NOT_FOUND, "Image Not Found"),
 
-    InvalidReservationRequest(HttpStatus.BAD_REQUEST, "Invalid reservation request"),
+    InvalidReservationException(HttpStatus.BAD_REQUEST, "Invalid reservation request"),
 
     ProductNotFoundException(HttpStatus.NOT_FOUND, "Product Not Found"),
 

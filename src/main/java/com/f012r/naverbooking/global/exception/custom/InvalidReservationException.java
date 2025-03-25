@@ -1,14 +1,10 @@
 package com.f012r.naverbooking.global.exception.custom;
 
 import com.f012r.naverbooking.global.common.ResponseCode;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
 
-@Getter
+@AllArgsConstructor
 public class InvalidReservationException extends RuntimeException {
-    private final ResponseCode responseCode;
 
-    public InvalidReservationException(ResponseCode responseCode) {
-        super(responseCode.getMessage());
-        this.responseCode = responseCode;
-    }
+    private ResponseCode responseCode;
 }
