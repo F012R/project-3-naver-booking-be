@@ -6,6 +6,7 @@ import com.f012r.naverbooking.global.exception.custom.EmptyEmailException;
 import com.f012r.naverbooking.global.exception.custom.InvalidEmailException;
 import com.f012r.naverbooking.global.exception.custom.ImageNotFoundException;
 import com.f012r.naverbooking.global.exception.custom.ProductNotFoundException;
+import com.f012r.naverbooking.global.exception.custom.InvalidDisplayInfoIdException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -32,11 +33,20 @@ public class CustomExceptionHandler {
                 .status(ResponseCode.ImageNotFoundException.getStatus().value())
                 .body(new ResponseDTO<>(ResponseCode.ImageNotFoundException, null));
     }
+
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ResponseDTO<Void>> handleProductNotFoundException(ProductNotFoundException e) {
         return ResponseEntity
                 .status(ResponseCode.ProductNotFoundException.getStatus().value())
                 .body(new ResponseDTO<>(ResponseCode.ProductNotFoundException, null));
     }
+
+    @ExceptionHandler(InvalidDisplayInfoIdException.class)
+    public ResponseEntity<ResponseDTO<Void>> handleInvalidDisplayInfoIdException(InvalidDisplayInfoIdException e) {
+        return ResponseEntity
+                .status(ResponseCode.InvalidDisplayInfoIdException.getStatus().value())
+                .body(new ResponseDTO<>(ResponseCode.InvalidDisplayInfoIdException, null));
+    }
+
 
 }
