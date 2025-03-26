@@ -2,6 +2,7 @@ package com.f012r.naverbooking.global.exception;
 
 import com.f012r.naverbooking.global.common.ResponseCode;
 import com.f012r.naverbooking.global.common.ResponseDTO;
+import com.f012r.naverbooking.global.exception.custom.*;
 import com.f012r.naverbooking.global.exception.custom.EmptyEmailException;
 import com.f012r.naverbooking.global.exception.custom.InvalidEmailException;
 import com.f012r.naverbooking.global.exception.custom.ImageNotFoundException;
@@ -34,6 +35,14 @@ public class CustomExceptionHandler {
                 .body(new ResponseDTO<>(ResponseCode.ImageNotFoundException, null));
     }
 
+
+    @ExceptionHandler(InvalidReservationException.class)
+    public ResponseEntity<ResponseDTO<Void>> handleInvalidReservationException(InvalidReservationException e) {
+        return ResponseEntity
+                .status(ResponseCode.InvalidReservationException.getStatus().value())
+                .body(new ResponseDTO<>(ResponseCode.InvalidReservationException, null));
+    }
+
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ResponseDTO<Void>> handleProductNotFoundException(ProductNotFoundException e) {
         return ResponseEntity
@@ -48,5 +57,19 @@ public class CustomExceptionHandler {
                 .body(new ResponseDTO<>(ResponseCode.InvalidDisplayInfoIdException, null));
     }
 
+
+    @ExceptionHandler(ReservationAlreadyCancelledException.class)
+    public ResponseEntity<ResponseDTO<Void>> ReservationAlreadyCancelledException(ReservationAlreadyCancelledException e) {
+        return ResponseEntity
+                .status(ResponseCode.ReservationAlreadyCancelledException.getStatus().value())
+                .body(new ResponseDTO<>(ResponseCode.ReservationAlreadyCancelledException, null));
+    }
+
+    @ExceptionHandler(ReservationNotFoundException.class)
+    public ResponseEntity<ResponseDTO<Void>> ReservationNotFoundException(ReservationNotFoundException e) {
+        return ResponseEntity
+                .status(ResponseCode.ReservationNotFoundException.getStatus().value())
+                .body(new ResponseDTO<>(ResponseCode.ReservationNotFoundException, null));
+    }
 
 }
