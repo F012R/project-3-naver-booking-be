@@ -7,6 +7,7 @@ import com.f012r.naverbooking.domain.products.repository.ProductImageRepository;
 import com.f012r.naverbooking.domain.products.repository.ProductsRepository;
 import com.f012r.naverbooking.domain.products.repository.DisplayInfoRepository;
 import com.f012r.naverbooking.global.common.ResponseCode;
+import com.f012r.naverbooking.global.exception.custom.ImageNotFoundException;
 import com.f012r.naverbooking.global.exception.custom.InvalidDisplayInfoIdException;
 import com.f012r.naverbooking.global.exception.custom.ProductNotFoundException;
 import org.springframework.stereotype.Service;
@@ -57,7 +58,7 @@ public class ProductsInfoService {
     private String getImageUrlByType(Product product, String type) {
         return productImageRepository.findFirstByProductAndType(product, type)
                 .map(productImage -> "/" + productImage.getFile().getSaveFileName())
-                .orElse(null);
+                .orElseThrow(() -> new ImageNotFoundException(ResponseCode.ImageNotFoundException));
     }
 
     private List<String> getImageUrlsByType(Product product, String type) {
