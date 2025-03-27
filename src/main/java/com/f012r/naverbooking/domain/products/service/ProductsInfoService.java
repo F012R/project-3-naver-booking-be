@@ -29,12 +29,9 @@ public class ProductsInfoService {
     }
 
     public ProductsInfoResponseDTO getProductInfo(Integer displayInfoId) {
-        if (displayInfoId < 1 || displayInfoId > 59) {
-            throw new InvalidDisplayInfoIdException(ResponseCode.InvalidDisplayInfoIdException);
-        }
 
         DisplayInfo displayInfo = displayInfoRepository.findById(displayInfoId)
-                .orElseThrow(() -> new ProductNotFoundException(ResponseCode.ProductNotFoundException));
+                .orElseThrow(() -> new InvalidDisplayInfoIdException(ResponseCode.InvalidDisplayInfoIdException));
 
         Product product = displayInfo.getProduct();
 
