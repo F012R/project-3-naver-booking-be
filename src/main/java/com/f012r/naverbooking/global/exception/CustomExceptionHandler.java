@@ -3,6 +3,11 @@ package com.f012r.naverbooking.global.exception;
 import com.f012r.naverbooking.global.common.ResponseCode;
 import com.f012r.naverbooking.global.common.ResponseDTO;
 import com.f012r.naverbooking.global.exception.custom.*;
+import com.f012r.naverbooking.global.exception.custom.EmptyEmailException;
+import com.f012r.naverbooking.global.exception.custom.InvalidEmailException;
+import com.f012r.naverbooking.global.exception.custom.ImageNotFoundException;
+import com.f012r.naverbooking.global.exception.custom.ProductNotFoundException;
+import com.f012r.naverbooking.global.exception.custom.InvalidDisplayInfoIdException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -30,6 +35,7 @@ public class CustomExceptionHandler {
                 .body(new ResponseDTO<>(ResponseCode.ImageNotFoundException, null));
     }
 
+
     @ExceptionHandler(InvalidReservationException.class)
     public ResponseEntity<ResponseDTO<Void>> handleInvalidReservationException(InvalidReservationException e) {
         return ResponseEntity
@@ -43,6 +49,14 @@ public class CustomExceptionHandler {
                 .status(ResponseCode.ProductNotFoundException.getStatus().value())
                 .body(new ResponseDTO<>(ResponseCode.ProductNotFoundException, null));
     }
+
+    @ExceptionHandler(InvalidDisplayInfoIdException.class)
+    public ResponseEntity<ResponseDTO<Void>> handleInvalidDisplayInfoIdException(InvalidDisplayInfoIdException e) {
+        return ResponseEntity
+                .status(ResponseCode.InvalidDisplayInfoIdException.getStatus().value())
+                .body(new ResponseDTO<>(ResponseCode.InvalidDisplayInfoIdException, null));
+    }
+
 
     @ExceptionHandler(ReservationAlreadyCancelledException.class)
     public ResponseEntity<ResponseDTO<Void>> ReservationAlreadyCancelledException(ReservationAlreadyCancelledException e) {

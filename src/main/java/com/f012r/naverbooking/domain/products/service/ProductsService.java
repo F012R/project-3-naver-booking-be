@@ -6,6 +6,7 @@ import com.f012r.naverbooking.domain.products.entity.Product;
 import com.f012r.naverbooking.domain.products.entity.ProductImage;
 import com.f012r.naverbooking.domain.products.repository.ProductImageRepository;
 import com.f012r.naverbooking.domain.products.repository.ProductsRepository;
+import com.f012r.naverbooking.global.common.ResponseCode;
 import com.f012r.naverbooking.global.exception.custom.ProductNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +32,7 @@ public class ProductsService {
         List<Product> products = productsRepository.findAll();
 
         if(products.isEmpty()) {
-            throw new ProductNotFoundException();
+            throw new ProductNotFoundException(ResponseCode.ProductNotFoundException);
         }
 
         return products.stream()
