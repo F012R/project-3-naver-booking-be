@@ -4,9 +4,14 @@ import com.f012r.naverbooking.domain.reservations.dto.ReservationCreateRequest;
 import com.f012r.naverbooking.domain.reservations.dto.ReservationInfoResponse;
 import com.f012r.naverbooking.domain.reservations.dto.ReservationListResponse;
 import com.f012r.naverbooking.domain.reservations.dto.UserInfoResponse;
+import com.f012r.naverbooking.domain.reservations.dto.ReservationUserCommentRequestDTO;
+import com.f012r.naverbooking.domain.reservations.dto.ReservationUserCommentResponseDTO;
+import com.f012r.naverbooking.domain.reservations.service.ReservationUserCommentService;
 import com.f012r.naverbooking.domain.reservations.service.ReservationCreateService;
 import com.f012r.naverbooking.domain.reservations.service.ReservationInfoService;
 import com.f012r.naverbooking.domain.reservations.service.ReservationCancelService;
+
+
 import com.f012r.naverbooking.global.common.ResponseDTO;
 import com.f012r.naverbooking.global.common.ResponseCode;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +28,7 @@ public class ReservationController {
     private final ReservationInfoService reservationService;
     private final ReservationCreateService reservationCreateService;
     private final ReservationCancelService reservationCancelService;
+    private final ReservationUserCommentService reservationUserCommentService;
 
     @GetMapping
     public ResponseEntity<ResponseDTO<?>> getReservations(@RequestParam String email) {
@@ -60,4 +66,21 @@ public class ReservationController {
         reservationCancelService.cancelReservation(reservationInfoId);
         return ResponseEntity.ok(new ResponseDTO<>(ResponseCode.SUCCESS, null));
     }
+
+    @PostMapping("/{reservationInfoId}/comments")
+    public ResponseEntity<ResponseDTO<?>> createComment(
+            @PathVariable("reservationInfoId") Integer reservationInfoId,
+            @RequestBody ReservationUserCommentRequestDTO requestDTO) {
+
+        requestDTO.setReservationInfoId(reservationInfoId);
+        ReservationUserCommentResponseDTO responseDTO = reservationUserCommentService.createComment(requestDTO);
+
+        return ResponseEntity.ok(
+                new ResponseDTO<>(
+                        ResponseCode.SUCCESS,
+                        responseDTO
+                )
+        );
+    }
+
 }

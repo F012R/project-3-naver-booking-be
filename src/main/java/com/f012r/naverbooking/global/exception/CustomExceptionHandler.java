@@ -8,6 +8,8 @@ import com.f012r.naverbooking.global.exception.custom.InvalidEmailException;
 import com.f012r.naverbooking.global.exception.custom.ImageNotFoundException;
 import com.f012r.naverbooking.global.exception.custom.ProductNotFoundException;
 import com.f012r.naverbooking.global.exception.custom.InvalidDisplayInfoIdException;
+import com.f012r.naverbooking.global.exception.custom.InvalidScoreException;
+import com.f012r.naverbooking.global.exception.custom.EmptyCommentException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -70,6 +72,20 @@ public class CustomExceptionHandler {
         return ResponseEntity
                 .status(ResponseCode.ReservationNotFoundException.getStatus().value())
                 .body(new ResponseDTO<>(ResponseCode.ReservationNotFoundException, null));
+    }
+
+    @ExceptionHandler(InvalidScoreException.class)
+    public ResponseEntity<ResponseDTO<Void>> InvalidScoreException(InvalidScoreException e) {
+        return ResponseEntity
+                .status(ResponseCode.InvalidScoreException.getStatus().value()) // 적절한 상태 코드로 설정
+                .body(new ResponseDTO<>(ResponseCode.InvalidScoreException, null));
+    }
+
+    @ExceptionHandler(EmptyCommentException.class)
+    public ResponseEntity<ResponseDTO<Void>> EmptyCommentException(EmptyCommentException e) {
+        return ResponseEntity
+                .status(ResponseCode.EmptyCommentException.getStatus().value()) // 적절한 상태 코드로 설정
+                .body(new ResponseDTO<>(ResponseCode.EmptyCommentException, null));
     }
 
 }

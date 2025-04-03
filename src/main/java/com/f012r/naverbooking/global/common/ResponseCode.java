@@ -1,5 +1,6 @@
 package com.f012r.naverbooking.global.common;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,11 @@ public enum ResponseCode {
 
     ReservationNotFoundException(HttpStatus.NOT_FOUND, "Reservation Not Found"),
 
-    ReservationAlreadyCancelledException(HttpStatus.BAD_REQUEST, "Reservation Already Cancelled");
+    ReservationAlreadyCancelledException(HttpStatus.BAD_REQUEST, "Reservation Already Cancelled"),
+
+    InvalidScoreException(HttpStatus.BAD_REQUEST, "Invalid score, must be between 0 and 5"),
+
+    EmptyCommentException(HttpStatus.BAD_REQUEST, "Comment cannot be empty");
 
     private final HttpStatus status;
     private final String message;
